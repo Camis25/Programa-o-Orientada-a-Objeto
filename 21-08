@@ -1,0 +1,143 @@
+public class Aula03 {
+    public static void main(String[] args) {
+        Professor prof1 = new Professor("Marcio", 50, 12, 470000);
+        prof1.fazAniversario();
+        prof1.recebeSalario();
+        System.out.println(prof1.getIdade());
+
+        Aluno a1 = new AlunoBolsista("João", 23, "Arquitetura", 8 , 1000);
+        a1.fazAniversario();
+        a1.verificaAprovacao();
+        a1.pagaMensalidade();
+        System.out.println(a1.getIdade()
+        );
+    }
+}
+
+
+public class Pessoa {
+
+    private String nome;
+    private int idade;
+
+
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void fazAniversario(){
+        this.idade = this.idade + 1;
+    }
+}
+
+
+
+public class Professor extends Pessoa{
+    private int cargaHoraria;
+    private double salario;
+
+
+    public Professor(String nome, int idade, int cargaHoraria, double salario) {
+        setNome(nome);
+        setIdade(idade);
+        this.cargaHoraria = cargaHoraria;
+        this.salario = salario;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        salario = salario;
+    }
+
+
+    public void recebeSalario(){
+        System.out.println(getNome() + " recebe uma salário de R$ " + this.salario );
+    }
+}
+
+public class Aluno extends Pessoa {
+    private String curso;
+    private double nota;
+    private double mensalidade;
+
+    public Aluno(String nome, int idade, String curso, double nota, double mensalidade) {
+        setNome(nome);
+        setIdade(idade);
+        this.curso = curso;
+        this.nota = nota;
+        this.mensalidade = mensalidade;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+
+    public double getMensalidade() {
+        return mensalidade;
+    }
+
+    public void setMensalidade(double mensalidade) {
+        this.mensalidade = mensalidade;
+    }
+    public void verificaAprovacao(){
+        if (this.nota >= 6.0){
+        System.out.println("Aluno aprovado com nota " + this.nota);
+        }else{
+            System.out.println("Aluno reprovado " + this.nota);
+        }
+    }
+
+    public void pagaMensalidade(){
+        System.out.println(getNome() + " tem a mensalidade paga");
+    }
+}
+
+public class AlunoBolsista extends Aluno{
+
+
+    public AlunoBolsista(String nome, int idade, String curso, double nota, double mensalidade) {
+        super(nome, idade, curso, nota, mensalidade);
+    }
+
+    //@Override
+    public void pagaMensalidade(){
+        System.out.println("Aluno bolsista não precisa pagar.");
+    }
+
+}
